@@ -1,0 +1,74 @@
+# name
+NAME := bureau
+
+# files
+## sources
+SRC :=
+vpath %.cpp src/
+SRC += main.cpp
+SRC += Bureaucrat.cpp
+
+## objects
+OBJ := $(SRC:.cpp=.o)
+OBJ := $(addprefix obj/,$(OBJ))
+
+## dependencies
+DEP := $(OBJ:.o=.d)
+
+# commands
+CC := c++
+LD := c++
+RM := rm -rf
+MKDIR = mkdir -p $(@D)
+
+# flags
+## cflags
+CFLAGS :=
+CFLAGS += -Wall
+CFLAGS += -Wextra
+CFLAGS += -Werror
+CFLAGS += -O3
+CFLAGS += -std=c++98
+
+## cppflags
+CPPFLAGS :=
+CPPFLAGS += -Iinc/
+CPPFLAGS += -MMD
+CPPFLAGS += -MP
+
+## ldflags
+LDFLAGS :=
+
+ifeq ($(DEBUG), 1)
+	CFLAGS += -O0
+	CFLAGS += -g3
+endif
+
+# rules
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(LD) $(OBJ) -o $@ $(LDFLAGS)
+
+obj/%.o: %.cpp
+	$(MKDIR)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+
+-include $(DEP)
+
+clean:
+	$(RM) obj/
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+run: re
+	./$(NAME)
+
+valgrind: re
+	valgrind ./$(NAME)
+
+.PHONY: all clean fclean re
