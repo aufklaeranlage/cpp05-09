@@ -65,10 +65,25 @@ void decAbove150()
 
 void showcase()
 {
-	std::cout << "<> Increase and decrease grade  <><><><><><><><><><><><><><><><><><><><><><><><>" << std::endl;
+	std::cout << "<> Functionality showcase <><><><><><><><><><><><><><><><><><><><><><><><><><><>" << std::endl;
+	std::cout << "<><> Parameterized construction <><><><><><><><><><><><><><><><><><><><><><><><>" << std::endl;
 	try {
 		Bureaucrat alice = Bureaucrat("Alice", 75);
 		std::cout << alice << std::endl;
+		{
+			std::cout << "<><> Default construction <><><><><><><><><><><><><><><><><><><><><><><><><><><>" << std::endl;
+			Bureaucrat def = Bureaucrat();
+			std::cout << def << std::endl;
+			std::cout << "<><> Assignment operator  <><><><><><><><><><><><><><><><><><><><><><><><><><><>" << std::endl;
+			def = alice;
+			std::cout << def << std::endl;
+		}
+		{
+			std::cout << "<><> Copy assignment  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><>" << std::endl;
+			Bureaucrat cpy = Bureaucrat(alice);
+			std::cout << cpy << std::endl;
+		}
+		std::cout << "<><> Method showcase  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><>" << std::endl;
 		alice.increaseGrade();
 		std::cout << alice << std::endl;
 		alice.decreaseGrade();
