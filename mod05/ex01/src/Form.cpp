@@ -74,7 +74,7 @@ std::ostream &operator<<(std::ostream &out, const Form &f)
 	out << "Form { name: " << f.getName()
 		<< ", isSigned: " << f.getSignedStatus()
 		<< ", gradeToSign: " << f.getGradeToSign()
-		<< ", gradeToExec: " << f.getGradeToExec() << " }" << std::endl;
+		<< ", gradeToExec: " << f.getGradeToExec() << " }";
 	return (out);
 }
 
