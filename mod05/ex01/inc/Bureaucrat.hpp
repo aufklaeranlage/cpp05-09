@@ -4,22 +4,18 @@
 # include <iostream>
 # include <exception>
 
+# include "GradeExceptions.hpp"
+# include "Form.hpp"
+
+class Form;
+
 class Bureaucrat {
 	private:
 		const std::string name;
 		unsigned int grade;
 
-		class GradeTooHighException: public std::exception {
-			virtual const char *what() const throw() {
-				return ("grade too high");
-			}
-		}	GradeTooHighException;
-
-		class GradeTooLowException: public std::exception {
-			virtual const char *what() const throw() {
-				return ("grade too low");
-			}
-		}	GradeTooLowException;
+		GradeTooHighExcep GradeTooHighException;
+		GradeTooLowExcep GradeTooLowException;
 
 	public:
 		// Constructors and Destructors
@@ -36,8 +32,9 @@ class Bureaucrat {
 		int getGrade(void) const;
 
 		// Methods
-		void increaseGrade();
-		void decreaseGrade();
+		void increaseGrade(void);
+		void decreaseGrade(void);
+		void signForm(Form &form);
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);

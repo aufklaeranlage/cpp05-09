@@ -2,14 +2,16 @@
 
 // Default constructors
 
-Bureaucrat::Bureaucrat(void): name("default")
+Bureaucrat::Bureaucrat(void):
+	name("default")
 {
 	std::cout << "Default Bureaucrat constructor called." << std::endl;
 	this->grade = 150;
 }
 
 
-Bureaucrat::Bureaucrat(const std::string &name, int grade): name(name)
+Bureaucrat::Bureaucrat(const std::string &name, int grade):
+	name(name)
 {
 	std::cout << "Parameterized Bureaucrat constructor called." << std::endl;
 	if (grade > 150)
@@ -21,7 +23,8 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade): name(name)
 
 // Copy constructors
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other):
+	name(other.name)
 {
 	std::cout << "Copy Bureaucrat constructor called." << std::endl;
 	*this = other;
@@ -59,18 +62,29 @@ int Bureaucrat::getGrade(void) const
 
 // Methods
 
-void Bureaucrat::increaseGrade()
+void Bureaucrat::increaseGrade(void)
 {
 	if (grade <= 1)
 		throw GradeTooHighException;
 	--grade;
 }
 
-void Bureaucrat::decreaseGrade()
+void Bureaucrat::decreaseGrade(void)
 {
 	if (150 <= grade)
 		throw GradeTooLowException;
 	++grade;
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+	try {
+		form.beSigned(*this);
+	}
+	catch (const std::exception &e) {
+		std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << "." << std::endl;
+	}
+	std::cout << name << " signed " << form.getName() << "." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
