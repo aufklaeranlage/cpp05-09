@@ -2,16 +2,17 @@
 
 // Default constructors
 
-Bureaucrat::Bureaucrat(void): name("default")
+Bureaucrat::Bureaucrat(void):
+	name("default")
 {
 	std::cout << "Default Bureaucrat constructor called." << std::endl;
 	this->grade = 150;
 }
 
 
-Bureaucrat::Bureaucrat(const std::string &name, int grade): name(name)
-{
-	std::cout << "Parameterized Bureaucrat constructor called." << std::endl;
+Bureaucrat::Bureaucrat(const std::string &name, int grade):
+	name(name)
+{ std::cout << "Parameterized Bureaucrat constructor called." << std::endl;
 	if (grade > 150)
 		throw GradeTooLowException;
 	if (grade < 1)
@@ -21,7 +22,8 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade): name(name)
 
 // Copy constructors
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other):
+	name(other.name)
 {
 	std::cout << "Copy Bureaucrat constructor called." << std::endl;
 	*this = other;
@@ -59,14 +61,14 @@ int Bureaucrat::getGrade(void) const
 
 // Methods
 
-void Bureaucrat::increaseGrade()
+void Bureaucrat::increaseGrade(void)
 {
 	if (grade <= 1)
 		throw GradeTooHighException;
 	--grade;
 }
 
-void Bureaucrat::decreaseGrade()
+void Bureaucrat::decreaseGrade(void)
 {
 	if (150 <= grade)
 		throw GradeTooLowException;
