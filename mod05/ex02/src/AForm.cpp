@@ -14,9 +14,9 @@ AForm::AForm(const std::string &name, int toSign, int toExec):
 {
 	std::cout << "Default AForm constructor called." << std::endl;
 	if (toSign > 150 || toExec > 150)
-		throw GradeTooLowException;
+		throw AForm::GradeTooLowException();
 	if (toSign < 1 || toExec < 1)
-		throw GradeTooHighException;
+		throw AForm::GradeTooHighException();
 	isSigned = false;
 }
 
@@ -83,15 +83,15 @@ std::ostream &operator<<(std::ostream &out, const AForm &f)
 void AForm::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() > gradeToSign)
-		throw GradeTooLowException;
+		throw AForm::GradeTooLowException();
 	isSigned = true;
 }
 
 void AForm::beExecuted(const Bureaucrat &b) const {
 	if (getSignedStatus() == false)
-		throw FormNotSignedException;
+		throw AForm::FormNotSignedException();
 	if (b.getGrade() > getGradeToExec())
-		throw GradeTooLowException;
+		throw AForm::GradeTooLowException();
 	execute();
 }
 

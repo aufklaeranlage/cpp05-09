@@ -17,11 +17,11 @@ class Bureaucrat {
 		class GradeTooLowException: public std::exception {
 			public:
 				virtual const char *what(void) const throw();
-		} GradeTooLowException;
+		};
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char *what(void) const throw();
-		} GradeTooHighException;
+		};
 	public:
 		// Constructors and Destructors
 		Bureaucrat(void);

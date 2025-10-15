@@ -20,15 +20,15 @@ class AForm {
 		class GradeTooLowException: public std::exception {
 			public:
 				virtual const char *what() const throw();
-		} GradeTooLowException;
+		};
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char *what() const throw();
-		} GradeTooHighException;
+		};
 		class FormNotSignedException: public std::exception {
 			public:
 				virtual const char *what() const throw();
-		} FormNotSignedException;
+		};
 	public:
 		// Constructors and Destructors
 		AForm(void);
