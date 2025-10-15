@@ -7,7 +7,6 @@ SRC :=
 vpath %.cpp src/
 SRC += main.cpp
 SRC += Bureaucrat.cpp
-SRC += GradeExceptions.cpp
 SRC += Form.cpp
 
 ## objects

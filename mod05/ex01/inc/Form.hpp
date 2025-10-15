@@ -14,8 +14,14 @@ class Form {
 		const int gradeToExec;
 
 		// Exceptions
-		GradeTooHighExcep GradeTooHighException;
-		GradeTooLowExcep GradeTooLowException;
+		class GradeTooLowException: public std::exception {
+			public:
+				virtual const char *what(void) const throw();
+		} GradeTooLowException;
+		class GradeTooHighException: public std::exception {
+			public:
+				virtual const char *what(void) const throw();
+		} GradeTooHighException;
 	public:
 		// Constructors and Destructors
 		Form(void);

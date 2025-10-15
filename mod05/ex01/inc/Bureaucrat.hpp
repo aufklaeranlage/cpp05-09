@@ -4,7 +4,6 @@
 # include <iostream>
 # include <exception>
 
-# include "GradeExceptions.hpp"
 # include "Form.hpp"
 
 class Form;
@@ -14,9 +13,15 @@ class Bureaucrat {
 		const std::string name;
 		unsigned int grade;
 
-		GradeTooHighExcep GradeTooHighException;
-		GradeTooLowExcep GradeTooLowException;
-
+		// Exceptions
+		class GradeTooLowException: public std::exception {
+			public:
+				virtual const char *what(void) const throw();
+		} GradeTooLowException;
+		class GradeTooHighException: public std::exception {
+			public:
+				virtual const char *what(void) const throw();
+		} GradeTooHighException;
 	public:
 		// Constructors and Destructors
 		Bureaucrat(void);

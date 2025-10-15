@@ -4,16 +4,20 @@
 # include <iostream>
 # include <exception>
 
-# include "GradeExceptions.hpp"
-
 class Bureaucrat {
 	private:
 		const std::string name;
 		unsigned int grade;
 
-		GradeTooHighExcep GradeTooHighException;
-		GradeTooLowExcep GradeTooLowException;
-
+		// Exceptions
+		class GradeTooLowException: public std::exception {
+			public:
+				virtual const char *what() const throw();
+		} GradeTooLowException;
+		class GradeTooHighException: public std::exception {
+			public:
+				virtual const char *what() const throw();
+		} GradeTooHighException;
 	public:
 		// Constructors and Destructors
 		Bureaucrat(void);

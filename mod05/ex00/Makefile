@@ -7,7 +7,6 @@ SRC :=
 vpath %.cpp src/
 SRC += main.cpp
 SRC += Bureaucrat.cpp
-SRC += GradeExceptions.cpp
 
 ## objects
 OBJ := $(SRC:.cpp=.o)
