@@ -1,4 +1,5 @@
-#include "Array.hpp"
+#ifndef ARRAY_TPP
+# define ARRAY_TPP
 
 #include <stdexcept>
 
@@ -88,3 +89,5 @@ template <class T>
 const char *Array<T>::OutOfRange::what(void) const throw() {
 	return ("Out of range");
 }
+
+#endif
