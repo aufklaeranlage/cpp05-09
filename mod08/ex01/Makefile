@@ -1,5 +1,5 @@
 # name
-NAME := array
+NAME := span
 
 # files
 ## sources
