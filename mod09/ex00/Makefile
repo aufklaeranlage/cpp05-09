@@ -5,7 +5,9 @@ NAME := btc
 ## sources
 SRC :=
 vpath %.cpp src/
+SRC += main.cpp
 SRC += BitcoinExchange.cpp
+SRC += Time.cpp
 
 ## objects
 OBJ := $(SRC:.cpp=.o)
