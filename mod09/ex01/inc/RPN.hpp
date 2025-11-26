@@ -3,12 +3,13 @@
 
 # include <iostream>
 # include <stack>
+# include <list>
 
 class RPN {
 private:
-	std::stack<int>		st;
-	int					err;
-	static const char	calcFuncSymbols[5];
+	std::stack<int, std::list<int> >	st;
+	int									err;
+	static const char					calcFuncSymbols[5];
 
 	int 	add(void);
 	int 	sub(void);
